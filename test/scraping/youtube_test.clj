@@ -1,4 +1,4 @@
-(ns scraping.youtube-test
+(ns clj.youtube-test
   (:require [midje.sweet :refer :all]
             [cheshire.core :refer :all]
             [net.cgrand.enlive-html :as html]
@@ -6,8 +6,8 @@
             [clojure.java.io :as io]
             [clj-http.client :as client]
             [clj-http.fake :refer [with-fake-routes]]
-            [scraping.helpers :as helpers]
-            [scraping.youtube :refer :all]
+            [clj.helpers :as helpers]
+            [clj.youtube :refer :all]
             ))
 
 

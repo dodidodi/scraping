@@ -1,8 +1,8 @@
-(ns scraping.youtube
+(ns clj.youtube
   (:require 
     [clojure.string :as str]
-    [scraping.helpers :as helpers]
-    [cheshire.core :as json]
+    [clj.helpers :as helpers]
+    [cheshire.core :refer :all]
     [net.cgrand.enlive-html :as html]
     [clj-http.client :as client]
     [clojure.java.io :as io]
@@ -25,7 +25,7 @@
 (defn fetch-next-frame [url]
   (let [response (-> (str base-url url)
                          (client/get {:header header})
-                         :body (json/parse-string true))]
+                         :body (parse-string true))]
         {:content_html (-> response :content_html helpers/make-html-resource)
          :load_more_widget_html (-> response :load_more_widget_html helpers/make-html-resource)}))
 
@@ -171,4 +171,3 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
